@@ -1,0 +1,934 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#"
+     xml:base="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:ont="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:obda="https://w3id.org/obda/vocabulary#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/vann:"
+     xmlns:schema="http://schema.org/"
+     xmlns:situation="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#"
+     xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24">
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl"/>
+        <dc:title xml:lang="it">Ontologia delle Infrastrutture di Ricarica per Veicoli Elettrici nelle Smart Cities</dc:title>
+        <dc:title xml:lang="it">Ontologia per la modellazionedi aree di ricarica in contesto urbano</dc:title>
+        <rdfs:label xml:lang="it">Andrea Lai</rdfs:label>
+        <rdfs:label xml:lang="en">EV Charging Infrastructure Ontology</rdfs:label>
+        <rdfs:label xml:lang="en">evcharge</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-13T00:00:00</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/vann:preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/vann:preferredNamespacePrefix"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#èGestitaDaOperatore -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#èGestitaDaOperatore">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ChargingPointOperator"/>
+        <rdfs:comment xml:lang="it">Collega un&apos;area di ricarica all&apos;operatore responsabile della sua gestione.</rdfs:comment>
+        <rdfs:label xml:lang="it">è gestita da operatore</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment xml:lang="it">Relazione generica di contenimento tra elementi dell&apos;infrastruttura di ricarica.</rdfs:comment>
+        <rdfs:label xml:lang="it">contiene</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneColonnina -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneColonnina">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica"/>
+        <rdfs:comment xml:lang="it">Collega una stazione di ricarica ai punti di ricarica che la compongono.</rdfs:comment>
+        <rdfs:label xml:lang="it">contiene punto di ricarica</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneConnettore -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneConnettore">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore"/>
+        <rdfs:comment xml:lang="it">Collega un punto di ricarica ai connettori disponibili.</rdfs:comment>
+        <rdfs:label xml:lang="it">contiene connettore</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneStazione -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneStazione">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <rdfs:comment xml:lang="it">Collega un&apos;area di ricarica alle stazioni presenti al suo interno.</rdfs:comment>
+        <rdfs:label xml:lang="it">contiene stazione di ricarica</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haConnettoreInCitta -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haConnettoreInCitta">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haInstallatoArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneStazione"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneColonnina"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneConnettore"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="it">Relazione inferita che collega una città ai connettori presenti nelle aree di ricarica installate sul suo territorio.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha connettore nella città</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haInstallatoArea -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haInstallatoArea">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èInstallataInCitta"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <rdfs:comment xml:lang="it">Collega una città alle aree di ricarica presenti nel suo territorio.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha installato area di ricarica</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haStato -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haStato">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoOperativo"/>
+        <rdfs:comment xml:lang="it">Associa una stazione o un punto di ricarica al relativo stato operativo</rdfs:comment>
+        <rdfs:label xml:lang="it">ha stato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haTipologiaCorrente -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haTipologiaCorrente">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/TipologiaCorrente"/>
+        <rdfs:comment xml:lang="it">Specifica la tipologia di corrente utilizzata da una stazione di ricarica.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha tipologia di corrente</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn">
+        <rdfs:comment xml:lang="it">Relazione inversa di contiene che indica l&apos;elemento contenitore di una risorsa</rdfs:comment>
+        <rdfs:label xml:lang="it">è contenuto in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èInProvincia -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èInProvincia">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia"/>
+        <rdfs:comment xml:lang="it">Indica la provincia in cui è situata la città</rdfs:comment>
+        <rdfs:label xml:lang="it">appartiene a provincia</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èInstallataInCitta -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èInstallataInCitta">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+        <rdfs:comment xml:lang="it">Collega un&apos;area di ricarica alla città in cui è ubicata.</rdfs:comment>
+        <rdfs:label xml:lang="it">è installata nella città</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#haOrarioApertura -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#haOrarioApertura">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Indica l&apos;orario di apertura dell&apos;area di ricarica</rdfs:comment>
+        <rdfs:label xml:lang="it">orario di apertura</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#haOrarioChiusura -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#haOrarioChiusura">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Indica l&apos;orario di chiusura dell&apos;area di ricarica</rdfs:comment>
+        <rdfs:label xml:lang="it">orario di chiusura</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#èSempreAperto -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#èSempreAperto">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="it">Indica se l&apos;infrastruttura di ricarica è accessibile 24 ore su 24</rdfs:label>
+        <rdfs:label xml:lang="it">è sempre aperto</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haPotenzaMassima -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haPotenzaMassima">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="it">Specifica la potenza massima erogabile dal punto di ricarica in KW</rdfs:comment>
+        <rdfs:label xml:lang="it">Potenza Massima</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#lat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
+        <rdfs:comment xml:lang="it">Coordinata geografica di latitudine dell&apos;entità spaziale.</rdfs:comment>
+        <rdfs:label xml:lang="it">latitudine</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#long -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#long">
+        <rdfs:comment xml:lang="it">Coordinata geografica di longitudine dell&apos;entità spaziale.</rdfs:comment>
+        <rdfs:label xml:lang="it">longitudine</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://schema.org/City -->
+
+    <owl:Class rdf:about="http://schema.org/City">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://schema.org/Organization -->
+
+    <owl:Class rdf:about="http://schema.org/Organization"/>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+        <rdfs:comment xml:lang="it">sito fisico che ospita una o più stazioni di ricarica per veicoli elettrici</rdfs:comment>
+        <rdfs:label xml:lang="it">Area di ricarica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ChargingPointOperator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ChargingPointOperator">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Organization"/>
+        <rdfs:comment xml:lang="it">Organizzazione responsabile dell&apos;installazione, gestione e manutenzione dell&apos;infrastruttura di ricarica</rdfs:comment>
+        <rdfs:label xml:lang="it">Operatore dei punti di ricarica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta">
+        <rdfs:comment xml:lang="it">Entità territoriale urbana nella quale sono installate aree di ricarica.</rdfs:comment>
+        <rdfs:label xml:lang="it">Città</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CittàSmart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CittàSmart">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haInstallatoArea"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneStazione"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneUltraVeloce"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+        <rdfs:comment xml:lang="it">Città caratterizzata dalla presenza di almeno due aree di ricarica contenenti stazioni ultra veloci.</rdfs:comment>
+        <rdfs:label xml:lang="it">Città smart</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore">
+        <rdfs:comment xml:lang="it">Dispositivo fisico che consente il collegamento tra il punto di ricarica e il veicolo elettrico</rdfs:comment>
+        <rdfs:label xml:lang="it">Connettore di Ricarica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia">
+        <rdfs:comment xml:lang="it">Suddivisione amministrativa territoriale che comprende uno o più comuni</rdfs:comment>
+        <rdfs:label xml:lang="it">Provincia</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica">
+        <rdfs:comment xml:lang="it">Colonnina o presa di ricarica che mette a disposizione uno o più connettori.</rdfs:comment>
+        <rdfs:label xml:lang="it">Punto di Ricarica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoOperativo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoOperativo">
+        <rdfs:comment xml:lang="it">Classe che rappresenta lo stato di disponibilità di un punto di ricarica</rdfs:comment>
+        <rdfs:label xml:lang="it">Stato operativo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+        <rdfs:comment xml:lang="it">rappresenta una situation per modellare lo stato Operativo di un area di ricarica</rdfs:comment>
+        <rdfs:label xml:lang="it">Stato stazione</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica">
+        <rdfs:comment xml:lang="it">Infrastruttura composta da uno o più punti di ricarica destinati all&apos;alimentazione di veicoli elettrici.</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di ricarica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneLenta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneLenta">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haTipologiaCorrente"/>
+                        <owl:hasValue rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AC"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <rdfs:comment xml:lang="it">Stazione di ricarica che utilizza corrente alternata (AC).</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di ricarica lenta</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneUltraVeloce -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneUltraVeloce">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneVeloce"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haPotenzaMassima"/>
+                                        <owl:someValuesFrom>
+                                            <rdfs:Datatype>
+                                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                                                <owl:withRestrictions rdf:parseType="Collection">
+                                                    <rdf:Description>
+                                                        <xsd:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">150</xsd:minExclusive>
+                                                    </rdf:Description>
+                                                </owl:withRestrictions>
+                                            </rdfs:Datatype>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneVeloce"/>
+        <rdfs:comment xml:lang="it">Stazione veloce collocata in un&apos;area di ricarica con potenza massima disponibile superiore a 150 kW.</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di ricarica ultra veloce</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneVeloce -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneVeloce">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haTipologiaCorrente"/>
+                        <owl:hasValue rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/DC"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <rdfs:comment xml:lang="it">Stazione di ricarica che utilizza corrente continua (DC).</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di ricarica veloce</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/TipologiaCorrente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/TipologiaCorrente">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AC"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/DC"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="it">Insieme delle modalità di alimentazione elettrica utilizzate per la ricarica, rappresentate dai valori AC e DC.</rdfs:comment>
+        <rdfs:label xml:lang="it">Tipologia di corrente</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#AtlanteSRL -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#AtlanteSRL">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ChargingPointOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#EnelX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#EnelX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ChargingPointOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AC">
+        <rdfs:comment xml:lang="it">Tipo di alimentazione elettrica in corrente alternata.</rdfs:comment>
+        <rdfs:label xml:lang="it">Corrente Alternata</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaCorsoOrbassanoTorino -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaCorsoOrbassanoTorino">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <situation:hasSetting rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT2"/>
+        <èGestitaDaOperatore rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#EnelX"/>
+        <ont:contieneStazione rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT1"/>
+        <ont:èInstallataInCitta rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Torino"/>
+        <èSempreAperto rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</èSempreAperto>
+        <ont:haPotenzaMassima rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">250</ont:haPotenzaMassima>
+        <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.11</geo:lat>
+        <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.683</geo:long>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaCorsoRomaniaTorino -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaCorsoRomaniaTorino">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <situation:hasSetting rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT1"/>
+        <èGestitaDaOperatore rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#AtlanteSRL"/>
+        <ont:contieneStazione rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT2"/>
+        <ont:contieneStazione rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT3"/>
+        <ont:èInstallataInCitta rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Torino"/>
+        <haOrarioApertura>08:30</haOrarioApertura>
+        <haOrarioChiusura>23:30</haOrarioChiusura>
+        <ont:haPotenzaMassima rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</ont:haPotenzaMassima>
+        <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.020</geo:lat>
+        <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.650</geo:long>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaMilanoCentro -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaMilanoCentro">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <ont:contieneStazione rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneM1"/>
+        <ont:èInstallataInCitta rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Milano"/>
+        <ont:haPotenzaMassima rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</ont:haPotenzaMassima>
+        <rdfs:comment xml:lang="it">Area di ricarica situata nel centro di Milano.</rdfs:comment>
+        <rdfs:label xml:lang="it">Area di Ricarica Milano Centro</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaNovara -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaNovara">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica"/>
+        <ont:contieneStazione rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneN1"/>
+        <ont:èInstallataInCitta rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Novara"/>
+        <ont:haPotenzaMassima rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22</ont:haPotenzaMassima>
+        <rdfs:comment xml:lang="it">Area di ricarica situata nella città di Novara.</rdfs:comment>
+        <rdfs:label xml:lang="it">Area di Ricarica Novara</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CCS1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CCS1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore"/>
+        <rdfs:comment xml:lang="it">Connettore di ricarica standard CCS tipo 1.</rdfs:comment>
+        <rdfs:label xml:lang="it">Connettore CCS1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CCS2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CCS2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore"/>
+        <rdfs:comment xml:lang="it">Connettore di ricarica standard CCS tipo 2.</rdfs:comment>
+        <rdfs:label xml:lang="it">Connettore CCS2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaM1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaM1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica"/>
+        <ont:contieneConnettore rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_2"/>
+        <rdfs:comment xml:lang="it">Punto di ricarica situato a Milano.</rdfs:comment>
+        <rdfs:label xml:lang="it">Colonnina M1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaN1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaN1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica"/>
+        <ont:contieneConnettore rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_3"/>
+        <rdfs:comment xml:lang="it">Punto di ricarica situato a Novara.</rdfs:comment>
+        <rdfs:label xml:lang="it">Colonnina N1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica"/>
+        <ont:contieneConnettore rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CCS1"/>
+        <rdfs:comment xml:lang="it">Punto di ricarica situato a Torino.</rdfs:comment>
+        <rdfs:label xml:lang="it">Colonnina T1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica"/>
+        <ont:contieneConnettore rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CCS2"/>
+        <rdfs:comment xml:lang="it">Punto di ricarica situato a Torino.</rdfs:comment>
+        <rdfs:label xml:lang="it">Colonnina T2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica"/>
+        <ont:contieneConnettore rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_1"/>
+        <rdfs:comment xml:lang="it">Punto di ricarica situato a Torino.</rdfs:comment>
+        <rdfs:label xml:lang="it">Colonnina T3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/DC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/DC">
+        <rdfs:comment xml:lang="it">Tipo di alimentazione elettrica in corrente continua.</rdfs:comment>
+        <rdfs:label xml:lang="it">Corrente Continua</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Libero -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Libero">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoOperativo"/>
+        <rdfs:comment xml:lang="it">Stato operativo che indica che la risorsa è disponibile.</rdfs:comment>
+        <rdfs:label xml:lang="it">Libero</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Milano -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Milano">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+        <ont:èInProvincia rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ProvinciaMilano"/>
+        <rdfs:comment xml:lang="it">Città di Milano.</rdfs:comment>
+        <rdfs:label xml:lang="it">Milano</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Novara -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Novara">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+        <ont:èInProvincia rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ProvinciaTorino"/>
+        <rdfs:comment xml:lang="it">Città di Novara.</rdfs:comment>
+        <rdfs:label xml:lang="it">Novara</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Occupato -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Occupato">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoOperativo"/>
+        <rdfs:comment xml:lang="it">Stato operativo che indica che la risorsa non è disponibile.</rdfs:comment>
+        <rdfs:label xml:lang="it">Occupato</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ProvinciaMilano -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ProvinciaMilano">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia"/>
+        <rdfs:comment xml:lang="it">Provincia di Milano.</rdfs:comment>
+        <rdfs:label xml:lang="it">Provincia di Milano</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ProvinciaTorino -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ProvinciaTorino">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia"/>
+        <rdfs:comment xml:lang="it">Provincia di Torino.</rdfs:comment>
+        <rdfs:label xml:lang="it">Provincia di Torino</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione"/>
+        <situation:hasSetting rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT1"/>
+        <ont:haStato rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Libero"/>
+        <rdfs:comment xml:lang="it">Stato attuale della stazione T1.</rdfs:comment>
+        <rdfs:label xml:lang="it">Situazione T1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione"/>
+        <ont:haStato rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Libero"/>
+        <rdfs:comment xml:lang="it">Stato attuale della stazione T2.</rdfs:comment>
+        <rdfs:label xml:lang="it">Situazione T2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneM1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneM1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <ont:contieneColonnina rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaM1"/>
+        <ont:haTipologiaCorrente rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AC"/>
+        <rdfs:comment xml:lang="it">Stazione di ricarica elettrica M1.</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di Ricarica M1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneN1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneN1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <ont:contieneColonnina rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaN1"/>
+        <ont:haTipologiaCorrente rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AC"/>
+        <rdfs:comment xml:lang="it">Stazione di ricarica elettrica N1.</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di Ricarica N1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <ont:contieneColonnina rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT1"/>
+        <ont:haTipologiaCorrente rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/DC"/>
+        <rdfs:comment xml:lang="it">Stazione di ricarica elettrica T1.</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di Ricarica T1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <ont:contieneColonnina rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT2"/>
+        <ont:haTipologiaCorrente rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/DC"/>
+        <rdfs:comment xml:lang="it">Stazione di ricarica elettrica T2.</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di Ricarica T2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneT3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+        <ont:contieneColonnina rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ColonninaT3"/>
+        <ont:haTipologiaCorrente rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AC"/>
+        <rdfs:comment xml:lang="it">Stazione di ricarica elettrica T3.</rdfs:comment>
+        <rdfs:label xml:lang="it">Stazione di Ricarica T3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Torino -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Torino">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta"/>
+        <ont:èInProvincia rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ProvinciaTorino"/>
+        <rdfs:comment xml:lang="it">Città di Torino.</rdfs:comment>
+        <rdfs:label xml:lang="it">Torino</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore"/>
+        <rdfs:comment xml:lang="it">Connettore di ricarica standard tipo 2.</rdfs:comment>
+        <rdfs:label xml:lang="it">Connettore Type 2 (1)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore"/>
+        <rdfs:comment xml:lang="it">Connettore di ricarica standard tipo 2.</rdfs:comment>
+        <rdfs:label xml:lang="it">Connettore Type 2 (2)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Type2_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore"/>
+        <rdfs:comment xml:lang="it">Connettore di ricarica standard tipo 2.</rdfs:comment>
+        <rdfs:label xml:lang="it">Connettore Type 2 (3)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://schema.org/City"/>
+            <rdf:Description rdf:about="http://schema.org/Organization"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoOperativo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/TipologiaCorrente"/>
+            <rdf:Description rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
