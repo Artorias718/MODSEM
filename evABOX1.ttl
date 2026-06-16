@@ -387,9 +387,9 @@ ont:AC rdf:type owl:NamedIndividual ;
 ###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaCorsoOrbassanoTorino
 ont:AreaCorsoOrbassanoTorino rdf:type owl:NamedIndividual ,
                                       ont:AreaDiRicarica ;
+                             <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#hasSetting> ont:SituazioneT2 ;
                              :èGestitaDaOperatore :EnelX ;
                              ont:contieneStazione ont:StazioneT1 ;
-                             ont:haStato ont:Libero ;
                              ont:èInstallataInCitta ont:Torino ;
                              :èSempreAperto "true"^^xsd:boolean ;
                              ont:haPotenzaMassima 250 ;
@@ -400,10 +400,10 @@ ont:AreaCorsoOrbassanoTorino rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaCorsoRomaniaTorino
 ont:AreaCorsoRomaniaTorino rdf:type owl:NamedIndividual ,
                                     ont:AreaDiRicarica ;
+                           <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#hasSetting> ont:SituazioneT1 ;
                            :èGestitaDaOperatore :AtlanteSRL ;
                            ont:contieneStazione ont:StazioneT2 ,
                                                 ont:StazioneT3 ;
-                           ont:haStato ont:Libero ;
                            ont:èInstallataInCitta ont:Torino ;
                            :haOrarioApertura "08:30" ;
                            :haOrarioChiusura "23:30" ;
@@ -548,6 +548,7 @@ ont:SituazioneT1 rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT2
 ont:SituazioneT2 rdf:type owl:NamedIndividual ,
                           ont:StatoStazione ;
+                 ont:haStato ont:Libero ;
                  rdfs:comment "Stato attuale della stazione T2."@it ;
                  rdfs:label "Situazione T2"@it .
 
@@ -631,9 +632,8 @@ ont:Type2_3 rdf:type owl:NamedIndividual ,
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( schema:Organization
-                <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation>
-                ont:Citta
+  owl:members ( schema:City
+                schema:Organization
                 ont:Connettore
                 ont:Provincia
                 ont:PuntoDiRicarica
