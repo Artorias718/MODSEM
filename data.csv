@@ -1,0 +1,3 @@
+ID EVSE,Codice Nazione,Provincia,Citta,Indirizzo,Codice postale,Latitudine,Longitudine,Stato,Tipologia parcheggio,ID Connettore,Potenza Erogabile,Restrizioni parcheggio,Servizi nelle vicinanze,Orario d'apertura,Potenza massima(W),Tipologia di corrente
+0,ITA,Catania,Bronte,Catania,95034,37.783615,14.82634,Non Attivo," ",2,Ultra fast," "," ",Aperto 24/7,120000,DC
+1,ITA,Grosseto,Grosseto,Via Aurelia Nord,58100,42.79063,11.089532,Non Attivo,ON_STREET,360101225,HPC," "," ",Aperto 24/7,200000,DC

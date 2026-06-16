@@ -1,0 +1,109 @@
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX ont: <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+
+  # Città e provincia
+  ?citta a ont:Citta ;
+         ont:èInProvincia ?provincia .
+
+  ?provincia a ont:Provincia .
+
+  # Area
+  ?area a ont:AreaDiRicarica ;
+        ont:èInstallataInCitta ?citta ;
+        ont:contieneStazione ?stazione ;
+        ont:haPotenzaMassima ?potenza ;
+        geo:lat ?latitudine ;
+        geo:long ?longitudine .
+
+  # Stazione
+  ?stazione a ont:StazioneDiRicarica ;
+            ont:haTipologiaCorrente ?corrente ;
+            ont:contieneColonnina ?punto .
+
+  # Punto di ricarica
+  ?punto a ont:PuntoDiRicarica ;
+         ont:contieneConnettore ?connettore .
+
+  # Connettore
+  ?connettore a ont:Connettore .
+
+}
+WHERE {
+
+  SERVICE <x-sparql-anything:location=data.csv,csv.headers=true> {
+
+      ?row xyz:ID%20EVSE ?id ;
+           xyz:Citta ?nomeCitta ;
+           xyz:Provincia ?nomeProvincia ;
+           xyz:Tipologia%20di%20corrente ?tipoCorrente ;
+           xyz:Potenza%20massima%28W%29 ?potenzaVal ;
+           xyz:Latitudine ?latVal ;
+           xyz:Longitudine ?lonVal .
+
+  }
+
+  # Città
+  BIND(
+      IRI(CONCAT(
+          "http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta_",
+          ENCODE_FOR_URI(STR(?nomeCitta))
+      )) AS ?citta
+  )
+
+  # Provincia
+  BIND(
+      IRI(CONCAT(
+          "http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia_",
+          ENCODE_FOR_URI(STR(?nomeProvincia))
+      )) AS ?provincia
+  )
+
+  # Area
+  BIND(
+      IRI(CONCAT(
+          "http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Area_",
+          STR(?id)
+      )) AS ?area
+  )
+
+  # Stazione
+  BIND(
+      IRI(CONCAT(
+          "http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Stazione_",
+          STR(?id)
+      )) AS ?stazione
+  )
+
+  # Punto di ricarica (creato artificialmente)
+  BIND(
+      IRI(CONCAT(
+          "http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Punto_",
+          STR(?id)
+      )) AS ?punto
+  )
+
+  # Connettore (creato artificialmente)
+  BIND(
+      IRI(CONCAT(
+          "http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore_",
+          STR(?id)
+      )) AS ?connettore
+  )
+
+  # Individui AC/DC già presenti nell'ontologia
+  BIND(
+      IRI(CONCAT(
+          "http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/",
+          ENCODE_FOR_URI(STR(?tipoCorrente))
+      )) AS ?corrente
+  )
+
+  BIND(xsd:decimal(?potenzaVal) AS ?potenza)
+  BIND(xsd:decimal(?latVal) AS ?latitudine)
+  BIND(xsd:decimal(?lonVal) AS ?longitudine)
+
+}

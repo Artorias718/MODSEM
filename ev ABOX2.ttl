@@ -1,0 +1,401 @@
+@prefix : <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix ont: <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@base <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24#> .
+
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24> rdf:type owl:Ontology ;
+                                                                           owl:imports <http://www.ontologydesignpatterns.org/cp/owl/situation.owl> ;
+                                                                           <http://purl.org/dc/elements/1.1/title> "Ontologia delle Infrastrutture di Ricarica per Veicoli Elettrici nelle Smart Cities"@it ,
+                                                                                                                   "Ontologia per la modellazionedi aree di ricarica in contesto urbano"@it ;
+                                                                           rdfs:label "Andrea Lai"@it ,
+                                                                                      "EV Charging Infrastructure Ontology"@en ,
+                                                                                      "evcharge"@en ,
+                                                                                      "2026-06-13T00:00:00"^^xsd:dateTime .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+<http://purl.org/dc/elements/1.1/date> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/vann:preferredNamespacePrefix
+ont:vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene
+ont:contiene rdf:type owl:ObjectProperty ;
+             owl:inverseOf ont:èContenutoIn ;
+             rdf:type owl:TransitiveProperty ;
+             rdfs:comment "Relazione generica di contenimento tra elementi dell'infrastruttura di ricarica."@it ;
+             rdfs:label "contiene"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneColonnina
+ont:contieneColonnina rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf ont:contiene ;
+                      rdfs:domain ont:StazioneDiRicarica ;
+                      rdfs:range ont:PuntoDiRicarica ;
+                      rdfs:comment "Collega una stazione di ricarica ai punti di ricarica che la compongono."@it ;
+                      rdfs:label "contiene punto di ricarica"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneConnettore
+ont:contieneConnettore rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf ont:contiene ;
+                       rdfs:domain ont:PuntoDiRicarica ;
+                       rdfs:range ont:Connettore ;
+                       rdfs:comment "Collega un punto di ricarica ai connettori disponibili."@it ;
+                       rdfs:label "contiene connettore"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneStazione
+ont:contieneStazione rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf ont:contiene ;
+                     rdfs:domain ont:AreaDiRicarica ;
+                     rdfs:range ont:StazioneDiRicarica ;
+                     rdfs:comment "Collega un'area di ricarica alle stazioni presenti al suo interno."@it ;
+                     rdfs:label "contiene stazione di ricarica"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haConnettoreInCitta
+ont:haConnettoreInCitta rdf:type owl:ObjectProperty ;
+                        owl:propertyChainAxiom ( ont:haInstallatoArea
+                                                 ont:contieneStazione
+                                                 ont:contieneColonnina
+                                                 ont:contieneConnettore
+                                               ) ;
+                        rdfs:comment "Relazione inferita che collega una città ai connettori presenti nelle aree di ricarica installate sul suo territorio."@it ;
+                        rdfs:label "ha connettore nella città"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haInstallatoArea
+ont:haInstallatoArea rdf:type owl:ObjectProperty ;
+                     owl:inverseOf ont:èInstallataInCitta ;
+                     rdfs:domain ont:Citta ;
+                     rdfs:range ont:AreaDiRicarica ;
+                     rdfs:comment "Collega una città alle aree di ricarica presenti nel suo territorio."@it ;
+                     rdfs:label "ha installato area di ricarica"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haStato
+ont:haStato rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor> .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haStatoAttuale
+ont:haStatoAttuale rdf:type owl:ObjectProperty ;
+                   owl:propertyChainAxiom ( <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#hasSetting>
+                                            ont:haStato
+                                          ) .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haTipologiaCorrente
+ont:haTipologiaCorrente rdf:type owl:ObjectProperty ,
+                                 owl:FunctionalProperty ;
+                        rdfs:domain ont:StazioneDiRicarica ;
+                        rdfs:range ont:TipologiaCorrente ;
+                        rdfs:comment "Specifica la tipologia di corrente utilizzata da una stazione di ricarica."@it ;
+                        rdfs:label "ha tipologia di corrente"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn
+ont:èContenutoIn rdf:type owl:ObjectProperty ;
+                 rdfs:comment "Relazione inversa di contiene che indica l'elemento contenitore di una risorsa"@it ;
+                 rdfs:label "è contenuto in"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èInProvincia
+ont:èInProvincia rdf:type owl:ObjectProperty ;
+                 rdfs:domain ont:Citta ;
+                 rdfs:range ont:Provincia ;
+                 rdfs:comment "Indica la provincia in cui è situata la città"@it ;
+                 rdfs:label "appartiene a provincia"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èInstallataInCitta
+ont:èInstallataInCitta rdf:type owl:ObjectProperty ,
+                                owl:FunctionalProperty ;
+                       rdfs:domain ont:AreaDiRicarica ;
+                       rdfs:range ont:Citta ;
+                       rdfs:comment "Collega un'area di ricarica alla città in cui è ubicata."@it ;
+                       rdfs:label "è installata nella città"@it .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/haPotenzaMassima
+ont:haPotenzaMassima rdf:type owl:DatatypeProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain ont:AreaDiRicarica ;
+                     rdfs:range xsd:decimal .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+geo:lat rdf:type owl:DatatypeProperty ;
+        rdfs:comment "Coordinata geografica di latitudine dell'entità spaziale."@it ;
+        rdfs:label "latitudine"@it .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+geo:long rdf:type owl:DatatypeProperty ;
+         rdfs:comment "Coordinata geografica di longitudine dell'entità spaziale."@it ;
+         rdfs:label "longitudine"@it .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://schema.org/City
+schema:City rdf:type owl:Class ;
+            owl:equivalentClass ont:Citta .
+
+
+###  http://schema.org/Organization
+schema:Organization rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica
+ont:AreaDiRicarica rdf:type owl:Class ;
+                   rdfs:subClassOf geo:SpatialThing ;
+                   owl:disjointWith ont:StazioneDiRicarica ;
+                   rdfs:comment "sito fisico che ospita una o più stazioni di ricarica per veicoli elettrici"@it ;
+                   rdfs:label "Area di ricarica"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ChargingPointOperator
+ont:ChargingPointOperator rdf:type owl:Class ;
+                          rdfs:subClassOf schema:Organization ;
+                          rdfs:comment "Organizzazione responsabile dell'installazione, gestione e manutenzione dell'infrastruttura di ricarica"@it ;
+                          rdfs:label "Operatore dei punti di ricarica"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta
+ont:Citta rdf:type owl:Class ;
+          rdfs:comment "Entità territoriale urbana nella quale sono installate aree di ricarica."@it ;
+          rdfs:label "Città"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CittàSmart
+ont:CittàSmart rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( ont:Citta
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty ont:haInstallatoArea ;
+                                                            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                            owl:onClass [ owl:intersectionOf ( ont:AreaDiRicarica
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty ont:contieneStazione ;
+                                                                                                 owl:someValuesFrom ont:StazioneUltraVeloce
+                                                                                               ]
+                                                                                             ) ;
+                                                                          rdf:type owl:Class
+                                                                        ]
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf ont:Citta ;
+               rdfs:comment "Città caratterizzata dalla presenza di almeno due aree di ricarica contenenti stazioni ultra veloci."@it ;
+               rdfs:label "Città smart"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore
+ont:Connettore rdf:type owl:Class ;
+               rdfs:comment "Dispositivo fisico che consente il collegamento tra il punto di ricarica e il veicolo elettrico"@it ;
+               rdfs:label "Connettore di Ricarica"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia
+ont:Provincia rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/PuntoDiRicarica
+ont:PuntoDiRicarica rdf:type owl:Class ;
+                    rdfs:comment "Colonnina o presa di ricarica che mette a disposizione uno o più connettori."@it ;
+                    rdfs:label "Punto di Ricarica"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoOperativo
+ont:StatoOperativo rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione
+ont:StatoStazione rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation> .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica
+ont:StazioneDiRicarica rdf:type owl:Class ;
+                       rdfs:comment "Infrastruttura composta da uno o più punti di ricarica destinati all'alimentazione di veicoli elettrici."@it ;
+                       rdfs:label "Stazione di ricarica"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneLenta
+ont:StazioneLenta rdf:type owl:Class ;
+                  rdfs:subClassOf ont:StazioneDiRicarica ;
+                  rdfs:comment "Stazione di ricarica che utilizza corrente alternata (AC)."@it ;
+                  rdfs:label "Stazione di ricarica lenta"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneUltraVeloce
+ont:StazioneUltraVeloce rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( ont:StazioneVeloce
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty ont:èContenutoIn ;
+                                                                     owl:someValuesFrom [ owl:intersectionOf ( ont:AreaDiRicarica
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty ont:haPotenzaMassima ;
+                                                                                                                 owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                                                                      owl:onDatatype xsd:decimal ;
+                                                                                                                                      owl:withRestrictions ( [ xsd:minExclusive 150
+                                                                                                                                                             ]
+                                                                                                                                                           )
+                                                                                                                                    ]
+                                                                                                               ]
+                                                                                                             ) ;
+                                                                                          rdf:type owl:Class
+                                                                                        ]
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ;
+                        rdfs:subClassOf ont:StazioneVeloce ;
+                        rdfs:comment "Stazione veloce collocata in un'area di ricarica con potenza massima disponibile superiore a 150 kW."@it ;
+                        rdfs:label "Stazione di ricarica ultra veloce"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneVeloce
+ont:StazioneVeloce rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty ont:haTipologiaCorrente ;
+                                         owl:hasValue ont:DC
+                                       ] ;
+                   rdfs:subClassOf ont:StazioneDiRicarica ;
+                   rdfs:comment "Stazione di ricarica che utilizza corrente continua (DC)."@it ;
+                   rdfs:label "Stazione di ricarica veloce"@it .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/TipologiaCorrente
+ont:TipologiaCorrente rdf:type owl:Class ;
+                      rdfs:comment "Insieme delle modalità di alimentazione elettrica utilizzate per la ricarica, rappresentate dai valori AC e DC."@it ;
+                      rdfs:label "Tipologia di corrente"@it .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
+geo:SpatialThing rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Area_0
+ont:Area_0 rdf:type owl:NamedIndividual ,
+                    ont:AreaDiRicarica ;
+           ont:contieneStazione ont:Stazione_0 ;
+           ont:èInstallataInCitta ont:Citta_Bronte ;
+           ont:haPotenzaMassima 120000 ;
+           geo:lat 37.783615 ;
+           geo:long 14.82634 .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Area_1
+ont:Area_1 rdf:type owl:NamedIndividual ,
+                    ont:AreaDiRicarica ;
+           ont:contieneStazione ont:Stazione_1 ;
+           ont:èInstallataInCitta ont:Citta_Grosseto ;
+           ont:haPotenzaMassima 200000 ;
+           geo:lat 42.79063 ;
+           geo:long 11.089532 .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta_Bronte
+ont:Citta_Bronte rdf:type owl:NamedIndividual ,
+                          ont:Citta ;
+                 ont:èInProvincia ont:Provincia_Catania .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta_Grosseto
+ont:Citta_Grosseto rdf:type owl:NamedIndividual ,
+                            ont:Citta ;
+                   ont:èInProvincia ont:Provincia_Grosseto .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore_0
+ont:Connettore_0 rdf:type owl:NamedIndividual ,
+                          ont:Connettore .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Connettore_1
+ont:Connettore_1 rdf:type owl:NamedIndividual ,
+                          ont:Connettore .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/DC
+ont:DC rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia_Catania
+ont:Provincia_Catania rdf:type owl:NamedIndividual ,
+                               ont:Provincia .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Provincia_Grosseto
+ont:Provincia_Grosseto rdf:type owl:NamedIndividual ,
+                                ont:Provincia .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Punto_0
+ont:Punto_0 rdf:type owl:NamedIndividual ,
+                     ont:PuntoDiRicarica ;
+            ont:contieneConnettore ont:Connettore_0 .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Punto_1
+ont:Punto_1 rdf:type owl:NamedIndividual ,
+                     ont:PuntoDiRicarica ;
+            ont:contieneConnettore ont:Connettore_1 .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Stazione_0
+ont:Stazione_0 rdf:type owl:NamedIndividual ,
+                        ont:StazioneDiRicarica ;
+               ont:contieneColonnina ont:Punto_0 ;
+               ont:haTipologiaCorrente ont:DC .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Stazione_1
+ont:Stazione_1 rdf:type owl:NamedIndividual ,
+                        ont:StazioneDiRicarica ;
+               ont:contieneColonnina ont:Punto_1 ;
+               ont:haTipologiaCorrente ont:DC .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

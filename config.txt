@@ -1,0 +1,21 @@
+java -jar sparql-anything-v1.0.0.jar -q query.sparql > risultato.ttl
+
+Aggiungere sempre
+
+ont:èInProvincia a owl:ObjectProperty .
+
+ont:èInstallataInCitta a owl:ObjectProperty .
+
+ont:contieneStazione a owl:ObjectProperty .
+
+ont:contieneColonnina a owl:ObjectProperty .
+
+ont:contieneConnettore a owl:ObjectProperty .
+
+ont:haTipologiaCorrente a owl:ObjectProperty .
+
+ont:haPotenzaMassima a owl:DatatypeProperty .
+
+ont:lat a owl:DatatypeProperty .
+
+ont:long a owl:DatatypeProperty .
