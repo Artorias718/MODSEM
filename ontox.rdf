@@ -796,7 +796,6 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/SituazioneT2">
         <rdf:type rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione"/>
-        <ont:haStato rdf:resource="http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Libero"/>
         <rdfs:comment xml:lang="it">Stato attuale della stazione T2.</rdfs:comment>
         <rdfs:label xml:lang="it">Situazione T2</rdfs:label>
     </owl:NamedIndividual>

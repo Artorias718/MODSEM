@@ -1,0 +1,109 @@
+@prefix : <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-41#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-41> .
+
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-41> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneColonnina
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneColonnina> rdf:type owl:ObjectProperty ;
+                                                                                            rdfs:subPropertyOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene> ,
+                                                                                                               [ owl:inverseOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn>
+                                                                                                               ] .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneConnettore
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneConnettore> rdf:type owl:ObjectProperty ;
+                                                                                             rdfs:subPropertyOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene> ,
+                                                                                                                [ owl:inverseOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn>
+                                                                                                                ] .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneStazione
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contieneStazione> rdf:type owl:ObjectProperty ;
+                                                                                           rdfs:subPropertyOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/contiene> ,
+                                                                                                              [ owl:inverseOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn>
+                                                                                                              ] .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/èContenutoIn> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://schema.org/City
+<http://schema.org/City> rdf:type owl:Class ;
+                         owl:equivalentClass <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta> .
+
+
+###  http://schema.org/Organization
+<http://schema.org/Organization> rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation
+<http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/AreaDiRicarica> rdf:type owl:Class ;
+                                                                                         rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ChargingPointOperator
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/ChargingPointOperator> rdf:type owl:Class ;
+                                                                                                rdfs:subClassOf <http://schema.org/Organization> .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CittàSmart
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/CittàSmart> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://schema.org/City> ,
+                                                                                                     <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/Citta> .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StatoStazione> rdf:type owl:Class ;
+                                                                                        rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation> .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneLenta
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneLenta> rdf:type owl:Class ;
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica> .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneUltraVeloce
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneUltraVeloce> rdf:type owl:Class ;
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneVeloce> .
+
+
+###  http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneVeloce
+<http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneVeloce> rdf:type owl:Class ;
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/harbi/ontologies/2026/5/untitled-ontology-24/StazioneDiRicarica> .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
